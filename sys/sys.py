@@ -23,7 +23,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route("/")
 def index():
-    return render_template("week06.html")
+    return render_template("index.html")
 
 
 @app.route("/member")

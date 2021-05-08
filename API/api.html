@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  </meta>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>My Website</title>
+  <link href="week03.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+  <div class=" Website">My Website</div>
+
+  <label for="burger">☰</label>
+  <ul class="ul">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+    <li><a>Item 3</a></li>
+    <li><a>Item 4</a></li>
+  </ul>
+
+  <div class="welcome">Welcome to MyHome</div>
+
+  <div class="main">
+  </div>
+
+
+  <script>
+    let list = document.querySelector(".main");
+    let src = "https://padax.github.io/taipei-day-trip-resources/taipei-attractions.json";
+    fetch(src).then(function (response) {
+      return response.json();
+    }).then(function (result) {
+      //console.log(result);
+      for (let i = 0; i < 8; i++) {
+        let container = document.createElement("div");
+        container.className = "box";
+        container.id = "container";
+        list.appendChild(container);
+
+        let picture = document.createElement("img");
+        picture.src = "http://" + ((result["result"]["results"][i].file).split('http://'))[1];
+        picture.className = "img";
+        console.log(picture);
+        document.getElementById('container').appendChild(picture);
+        container.appendChild(picture);
+
+        let tlite = document.createElement("div");
+        tlite.className = "content";
+        tlite.textContent = result["result"]["results"][i].stitle;
+        console.log(tlite);
+        container.appendChild(tlite);
+
+      }
+    });
+  </script>
+</body>
+
+</html>
